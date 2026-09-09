@@ -1,0 +1,16 @@
+/* 1. Import the premium font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@import "tailwindcss";
+@variant dark (&:where(.dark, .dark *));
+
+/* 2. Tell Tailwind to use it globally */
+@theme {
+  --font-sans: 'Inter', system-ui, sans-serif;
+}
+
+/* Make the whole app text smooth */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
