@@ -1,6 +1,6 @@
 # TransitCheck: Logistics Route Visualizer
 
- **Live Deployment:** [View the Live Dashboard Here](https://transit-check-beryl.vercel.app/) *(Update this placeholder with your actual Vercel URL)*
+ **Live Deployment:** [View the Live Dashboard Here](https://transit-check-beryl.vercel.app/) 
 
 A high-fidelity logistics dashboard built to simulate and track delivery vehicles in real-time. This application provides live geographic telemetry, ETA calculations, and animated coordinate interpolation wrapped in a production-ready SaaS interface.
 
