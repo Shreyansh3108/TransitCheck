@@ -20,42 +20,15 @@ Modern logistics operations require real-time visibility into transit routes. Th
 The application relies on a decoupled React architecture, isolating the highly active animation loop from the presentation components to ensure optimal rendering performance.
 
 ```mermaid
-flowchart TB
-    subgraph Data["📦 Data Layer"]
-        API[(Mock Route Data)]
-    end
-
-    subgraph Logic["⚙️ State & Animation Engine"]
-        RouteHook([useRouteData])
-        SimHook[[useTruckSimulation]]
-        Math{{Geo-Math Interpolation}}
-    end
-
-    subgraph UI["🖥️ Presentation Layer"]
-        Dashboard[App Dashboard Layout]
-        Panel[Status Panel UI]
-        Controls[Controls Bar UI]
-        Map[React-Leaflet Map]
-    end
-
-    %% Connections
-    API -->|Loads coordinates| RouteHook
-    RouteHook -->|Passes segments| SimHook
-    SimHook <-->|requestAnimationFrame| Math
-    SimHook == "Live distance, heading, progress" ===> Dashboard
+flowchart TD
+    A[Mock Route Data API] -->|Loads Coordinates| B(useRouteData)
     
-    Dashboard --> Panel
-    Dashboard --> Controls
-    Dashboard --> Map
-
-    %% Styling
-    classDef dataNode fill:#0f172a,stroke:#3b82f6,stroke-width:2px,color:#e2e8f0
-    classDef logicNode fill:#0f172a,stroke:#8b5cf6,stroke-width:2px,color:#e2e8f0
-    classDef uiNode fill:#0f172a,stroke:#10b981,stroke-width:2px,color:#e2e8f0
-    style Data fill:none,stroke:#475569,stroke-width:1px,stroke-dasharray: 5 5
-    style Logic fill:none,stroke:#475569,stroke-width:1px,stroke-dasharray: 5 5
-    style UI fill:none,stroke:#475569,stroke-width:1px,stroke-dasharray: 5 5
-
-    class API dataNode
-    class RouteHook,SimHook,Math logicNode
-    class Dashboard,Panel,Controls,Map uiNode
+    B -->|Passes Segments| C{useTruckSimulation}
+    
+    C <-->|requestAnimationFrame| D[Geo-Math Interpolation]
+    
+    C ===>|Live Distance, Heading & Progress| E[App Dashboard Layout]
+    
+    E --> F[Status Panel UI]
+    E --> G[Controls Bar UI]
+    E --> H[React-Leaflet Map]
