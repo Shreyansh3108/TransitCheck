@@ -15,20 +15,3 @@ Modern logistics operations require real-time visibility into transit routes. Th
 * **ETA Calculation (Bonus):** Derive real-time estimated arrival minutes based on remaining distance and a constant vehicle speed.
 * **Theme Support (Bonus):** Build a manual Light/Dark mode toggle architecture.
 
-## System Architecture
-
-The application relies on a decoupled React architecture, isolating the highly active animation loop from the presentation components to ensure optimal rendering performance.
-
-```mermaid
-flowchart TD
-    A[Mock Route Data API] -->|Loads Coordinates| B(useRouteData)
-    
-    B -->|Passes Segments| C{useTruckSimulation}
-    
-    C <-->|requestAnimationFrame| D[Geo-Math Interpolation]
-    
-    C ===>|Live Distance, Heading & Progress| E[App Dashboard Layout]
-    
-    E --> F[Status Panel UI]
-    E --> G[Controls Bar UI]
-    E --> H[React-Leaflet Map]
