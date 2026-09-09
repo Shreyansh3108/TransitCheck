@@ -3,15 +3,7 @@ export interface Stop {
   label: string;
   lat: number;
   lng: number;
-  type: "origin" | "delivery";
-}
-
-export interface Stop {
-  id: string;
-  label: string;
-  lat: number;
-  lng: number;
-  type: "origin" | "delivery" | "waypoint"; // Added waypoint here
+  type: "origin" | "delivery" | "waypoint";
 }
 
 export interface Segment {

@@ -1,7 +1,7 @@
 import { divIcon } from "leaflet";
 import type { Stop } from "../../types/route";
 
-export const markerIcon = (stop: Stop, isCompleted: boolean) => 
+export const markerIcon = (_stop: Stop, isCompleted: boolean) =>
   divIcon({
     className: "bg-transparent",
     html: `<div class="w-4 h-4 rounded-full border-2 border-white ${isCompleted ? 'bg-[#3DDC97]' : 'bg-[#F2A93B]'} shadow-md"></div>`,
